@@ -80,7 +80,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <TRPCProvider>
       <html
         lang='en'
-        className={cn('scroll-smooth bg-neutral-900 font-sans text-slate-50 antialiased')}
+        className={cn('scroll-smooth bg-[#4ca1af] font-sans text-slate-50 antialiased')}
       >
         <head />
         <body className='min-h-screen'>

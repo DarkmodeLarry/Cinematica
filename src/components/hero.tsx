@@ -30,22 +30,14 @@ const Hero = ({ shows }: HeroProps) => {
     return null
   }
 
-  const overlayStyle = {
-    backgroundImage: `url(${imageLargeBase}${
-      featuredMovie.backdrop_path || featuredMovie.poster_path
-    })`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'top right'
-  }
-
   return (
-    <section aria-label='Hero' className='w-full'>
+    <section aria-label='Hero' className='w-full py-12 pl-28 '>
       {randomShow && (
         <div className='container w-full max-w-screen-2xl'>
-          <div className='absolute inset-0 w-full h-screen -z-10'>
+          <div className='absolute inset-0 w-full h-screen'>
             <div
               className={cn(
-                'bg-black/60 bg-gradient-to-b from-neutral-900/10 to-neutral-900',
+                '[bg-[#3a6979] bg-gradient-to-t from-bg-[#3a6979] to-bg-[#4ca1af]',
                 'absolute inset-0 z-10 h-full w-full'
               )}
             />
@@ -54,13 +46,14 @@ const Hero = ({ shows }: HeroProps) => {
                 randomShow?.poster_path ?? randomShow?.backdrop_path ?? ''
               }`}
               alt={randomShow?.title ?? 'poster'}
-              className='object-cover w-full h-auto'
+              className='z-0 object-cover w-full h-auto opacity-20'
               fill
               priority
             />
           </div>
           <div className='grid max-w-lg pt-24 space-y-2 '>
-            <h1 className='text-3xl font-bold md:text-4xl'>
+            <p className='text-2xl font-medium uppercase'>today&apos; featured film</p>
+            <h1 className='text-4xl font-bold tracking-wide md:text-4xl'>
               {randomShow?.title ?? randomShow?.name}
             </h1>
             <div className='flex space-x-2 text-xs font-semibold md:text-sm'>
