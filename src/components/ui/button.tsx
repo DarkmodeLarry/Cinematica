@@ -14,13 +14,17 @@ const buttonVariants = cva(
         subtle: 'hover:bg-zinc-200 bg-zinc-100 text-zinc-900',
         ghost:
           'bg-transparent hover:bg-zinc-100 text-zinc-800 data-[state=open]:bg-transparent data-[state=open]:bg-transparent',
-        link: 'bg-transparent dark:bg-transparent underline-offset-4 hover:underline text-slate-900 dark:text-slate-100 hover:bg-transparent dark:hover:bg-transparent'
+        link: 'bg-transparent dark:bg-transparent underline-offset-4 hover:underline text-slate-900 dark:text-slate-100 hover:bg-transparent dark:hover:bg-transparent',
+        brand:
+          'bg-red-600 text-white hover:bg-transparent dark:bg-gray-600 dark:text-white dark:hover:bg-gray-700',
+        flat: 'rounded-none bg-slate-50 text-slate-900 hover:bg-slate-600 hover:text-slate-100 dark:bg-slate-50 dark:text-slate-900 dark:hover:bg-transparent dark:hover:text-slate-100 hover:rounded-md'
       },
       size: {
         default: 'h-10 py-2 px-4',
         sm: 'h-9 px-2 rounded-md',
         xs: 'h-8 px-1.5 rounded-sm',
-        lg: 'h-11 px-8 rounded-md'
+        lg: 'h-11 px-8 rounded-md',
+        auto: 'px-4 py-2'
       }
     },
     defaultVariants: {

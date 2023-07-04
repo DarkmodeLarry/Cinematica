@@ -1,97 +1,106 @@
-import type { PlansConfig } from "@/types";
+import type { PlansConfig } from '@/types'
 
-import { Icons } from "@/components/icons";
+import { Icons } from '@/components/icons'
 
 export const plansConfig: PlansConfig = {
   perks: [
-    "Watch on your phone, tablet, laptop, and TV",
-    "Unlimited movies and TV shows",
-    "Change or cancel your plan anytime",
+    'Watch new Theater releases from the comfort of your phone, tablet, laptop, TV or Home Theater',
+    'Unlimited movies and TV shows',
+    'Change or cancel your plan anytime'
   ],
   plans: [
     {
-      name: "Mobile",
-      price: 2.99,
-      videoQuality: "Good",
-      resolution: "480p",
+      name: 'Chillax Mobile',
+      screen: 'Mobile only',
+      price: 14.99,
+      videoQuality: 'Good',
+      resolution: '480p SD Streaming',
       devices: [
         {
-          title: "Phone",
-          icon: Icons.phone,
+          title: 'Phone',
+          icon: Icons.phone
         },
         {
-          title: "Tablet",
-          icon: Icons.tablet,
-        },
-      ],
+          title: 'Tablet',
+          icon: Icons.tablet
+        }
+      ]
     },
     {
-      name: "Basic",
-      price: 3.99,
-      videoQuality: "Good",
-      resolution: "720p",
+      name: 'Chillax Lite',
+      screen: 'Two screens',
+      price: 19.99,
+      videoQuality: 'Good',
+      resolution: '720p SD Streaming',
       devices: [
         {
-          title: "Phone",
-          icon: Icons.phone,
+          title: 'Phone',
+          icon: Icons.phone
         },
         {
-          title: "Tablet",
-          icon: Icons.tablet,
+          title: 'Tablet',
+          icon: Icons.tablet
         },
         {
-          title: "Computer",
-          icon: Icons.computer,
-        },
-      ],
+          title: 'Computer',
+          icon: Icons.computer
+        }
+      ]
     },
     {
-      name: "Standard",
-      price: 7.99,
-      videoQuality: "Better",
-      resolution: "1080p",
+      name: 'Chillax HD',
+      screen: 'Max 5 screens',
+      shows: '2 shows per week',
+      price: 29.99,
+      videoQuality: 'Better',
+      resolution: '1080p HD Streaming',
       devices: [
         {
-          title: "Phone",
-          icon: Icons.phone,
+          title: 'Phone',
+          icon: Icons.phone
         },
         {
-          title: "Tablet",
-          icon: Icons.tablet,
+          title: 'Tablet',
+          icon: Icons.tablet
         },
         {
-          title: "Computer",
-          icon: Icons.computer,
+          title: 'Computer',
+          icon: Icons.computer
         },
         {
-          title: "TV",
-          icon: Icons.tv,
-        },
-      ],
+          title: 'TV',
+          icon: Icons.tv
+        }
+      ]
     },
     {
-      name: "Premium",
-      price: 9.99,
-      videoQuality: "Best",
-      resolution: "4K+HDR",
+      name: 'Chillax Theater',
+      screen: 'Unlimited screens',
+      price: 39.99,
+      videoQuality: 'Best',
+      resolution: '4K+HDR Streaming',
       devices: [
         {
-          title: "Phone",
-          icon: Icons.phone,
+          title: 'Phone',
+          icon: Icons.phone
         },
         {
-          title: "Tablet",
-          icon: Icons.tablet,
+          title: 'Tablet',
+          icon: Icons.tablet
         },
         {
-          title: "Computer",
-          icon: Icons.computer,
+          title: 'Computer',
+          icon: Icons.computer
         },
         {
-          title: "TV",
-          icon: Icons.tv,
+          title: 'TV',
+          icon: Icons.tv
         },
-      ],
-    },
-  ],
-};
+        {
+          title: 'Theater',
+          icon: Icons.theater
+        }
+      ]
+    }
+  ]
+}

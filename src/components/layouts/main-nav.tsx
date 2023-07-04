@@ -31,16 +31,18 @@ export function MainNav({ items }: MainNavProps) {
     <div className='flex gap-6 lg:gap-10'>
       <Link
         href='/'
-        className='hidden lg:block'
+        className='hidden md:block'
         onClick={() => {
           searchStore.setQuery('')
           searchStore.setShows([])
         }}
       >
-        <h2 className=''>Chillax</h2>
+        <h2 className='w-28 h-auto object-cover transition-opacity-80 hover:opacity-80 active:opacity-100 active:border-2 border-2 active:border-cyan-700'>
+          Chillax
+        </h2>
       </Link>
       {items?.length ? (
-        <nav className='hidden gap-6 lg:flex'>
+        <nav className='hidden gap-6 md:flex'>
           {items?.map(
             (item, index) =>
               item.href && (
@@ -48,8 +50,8 @@ export function MainNav({ items }: MainNavProps) {
                   key={index}
                   href={item.href}
                   className={cn(
-                    'flex items-center text-lg font-medium text-slate-300 transition hover:text-slate-300 hover:text-opacity-70 dark:text-slate-300 dark:hover:text-slate-300 dark:hover:text-opacity-70 sm:text-sm',
-                    path === item.href && 'font-bold text-white dark:text-white',
+                    'flex items-center text-lg font-medium text-[#f5f5f5] transition hover:text-slate-300 hover:text-opacity-70 dark:text-slate-300 dark:hover:text-slate-300 dark:hover:text-opacity-70 sm:text-sm',
+                    path === item.href && 'font-bold text-[#f5f5f5] dark:text-white',
                     item.disabled && 'cursor-not-allowed opacity-80'
                   )}
                   onClick={() => searchStore.setQuery('')}
@@ -64,7 +66,7 @@ export function MainNav({ items }: MainNavProps) {
         <DropdownMenuTrigger asChild>
           <Button
             variant='ghost'
-            className='h-auto px-2 py-1.5 text-base hover:bg-neutral-800 focus:ring-0 dark:hover:bg-neutral-800 lg:hidden'
+            className='h-auto px-2 py-1.5 text-base hover:bg-neutral-800 focus:ring-0 dark:hover:bg-neutral-800 md:hidden'
           >
             <span className='font-bold'>Menu</span>
           </Button>
@@ -72,7 +74,7 @@ export function MainNav({ items }: MainNavProps) {
         <DropdownMenuContent
           align='start'
           sideOffset={20}
-          className='overflow-x-hidden overflow-y-auto rounded-sm w-52 bg-neutral-800 text-slate-200 dark:bg-neutral-800 dark:text-slate-200'
+          className='overflow-x-hidden overflow-y-auto rounded-sm w-52 bg-neutral-700 text-slate-200 dark:bg-neutral-800 dark:text-slate-200'
         >
           <DropdownMenuLabel>
             <Link

@@ -1,10 +1,9 @@
 import type { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 import { prisma } from '@/server/db'
+
 import SignIn from '@/components/forms/SignIn'
 import { getCurrentUser } from '@/lib/session'
-import Image from 'next/image'
-import marvel from '@/assets/marvel-group.jpg'
 
 export const metadata: Metadata = {
   title: 'Login',
@@ -32,7 +31,7 @@ export default async function LoginPage() {
   }
 
   return (
-    <section className='relative flex flex-col items-center justify-center w-screen min-h-screen '>
+    <section className='login'>
       <SignIn />
     </section>
   )

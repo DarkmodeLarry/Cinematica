@@ -1,18 +1,28 @@
-// import { Work_Sans } from 'next/font/google'
-import { Mulish } from 'next/font/google'
+import { Work_Sans, Mulish, Space_Grotesk } from 'next/font/google'
 import TRPCProvider from '@/context/trpc-provider'
 import { siteConfig } from '@/config/site'
 import { absoluteUrl, cn } from '@/lib/utils'
 import TailwindIndicator from '@/components/tailwind-indicator'
 import '@/styles/globals.css'
+import ToastWrapper from '@/components/ui/toast-wrapper'
 
 const mulish = Mulish({
-  subsets: ['latin']
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-mulish'
 })
 
-// const work = Work_Sans({
-//   subsets: ['latin']
-// })
+const work = Work_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-work'
+})
+
+const space = Space_Grotesk({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-space'
+})
 
 interface RootLayoutProps {
   children: React.ReactNode
@@ -36,7 +46,7 @@ export const metadata = {
   ],
   authors: [
     {
-      name: 'shogunOfSabi',
+      name: 'ronin',
       url: 'https://github.com/shogunOfSabi'
     }
   ],
@@ -66,7 +76,7 @@ export const metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     images: [`${siteConfig.url}/api/og.tsx`],
-    creator: '@shogunOfSabi'
+    creator: '@elRaton'
   },
   icons: {
     icon: '/favicon.ico',
@@ -80,14 +90,59 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <TRPCProvider>
       <html
         lang='en'
-        className={cn('scroll-smooth bg-[#4ca1af] font-sans text-slate-50 antialiased')}
+        className={cn(
+          'layoutRoot scroll-smooth layoutRoot bg-[#242033] text-slate-900 antialiased',
+          mulish.variable
+        )}
       >
         <head />
         <body className='min-h-screen'>
           {children}
+          <ToastWrapper />
           <TailwindIndicator />
         </body>
       </html>
     </TRPCProvider>
   )
 }
+
+// StreamVue
+// FlixHub
+// MoviePlus
+// CineStream
+// ScreenMasters
+// PicturePerfect
+// SilverScreen
+// Cinematica
+// MovieMagic
+// StreamFlix
+// CinemaMax
+// FilmFlow
+// BigScreen
+// StreamCine
+// MovieSphere
+// HomeScreen
+// CineView
+// FilmFlex
+// ScreenBox
+// PicturePalace
+// CinemaWonders
+// PicturePerfection
+// FlickerVision
+// FilmFantasy
+// CineSpectacle
+// ReelMagic
+// SilverScreenSociety
+// EpicCinema
+// BlockbusterBliss
+// MovieMarquee
+// Cinemagic
+// ShowtimeSpectacular
+// ScreenMarvel
+// FilmPhenomenon
+// PictureParadise
+// CinematicMarvels
+// BigScreenMagic
+// FilmFever
+// PictureShowcase
+// ReelEnchantment

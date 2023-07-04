@@ -47,7 +47,8 @@ const ShowsContainer = ({ user, shows }: ShowsContainerProps) => {
       {path === '/' && myShowsQuery?.isSuccess && myShowsQuery.data.length > 0 ? (
         <ShowsCarousel title='My List' shows={user ? myShowsQuery?.data : []} />
       ) : null}
-      {shows.map((item) => (
+
+      {shows?.map((item) => (
         <ShowsCarousel key={item.title} title={item.title} shows={item.shows ?? []} />
       ))}
     </div>

@@ -1,34 +1,33 @@
 'use client'
-import UserAuthForm from './UserAuthForm'
+
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Icons } from '../icons'
 import { Input } from '../ui/input'
 import { Label } from '../ui/label'
+import LoginButton from '@/components/login-button'
 
 const SignIn = () => {
   return (
-    <div className='container z-50 w-3/4 h-[500px] bg-blue-900 bg-opacity-50 border rounded-3xl flex flex-col -mt-6 sm:w-[400px]'>
+    <div className='form w-full'>
       <motion.div
         initial={{ opacity: 0, y: '5rem' }}
         exit={{ opacity: 0, y: '5rem' }}
         animate={{ opacity: 1, y: 0 }}
         layout
-        className='flex flex-col w-full pt-10 rounded-md'
+        className='flex flex-col w-full pt-8 rounded-md bg-zinc-800/25'
       >
-        <h1 className='m-6 text-2xl font-semibold tracking-tight'>Welcome back!</h1>
-        <div className='container w-full h-full mx-auto '>
-          <h1 className='mb-4 text-3xl font-bold text-left'>Login</h1>
-          <div className='flex flex-col w-full space-y-6 text-center'>
-            <Label className='text-left translate-y-3'>Email Address</Label>
-            <Input type='email' placeholder='Email' />
-            <Label className='text-left translate-y-3'>Password</Label>
-            <Input type='email' placeholder='Email' />
-            <p className='max-w-xs mx-auto text-sm'>By logging in, you agree to everything.</p>
+        <h1 className='text-xl font-mulish tracking-tight'>WELCOME BACK!</h1>
+        <div className=' w-full h-full mx-auto '>
+          <h1 className='text-2xl uppercase font-work font-bold text-left py-5'>Login</h1>
+          <div className='flex flex-col w-full space-y-3 text-center'>
+            <Input type='email' placeholder='Email' className='flex flex-col mb-6 w-full' />
+            <Input type='email' placeholder='Password' />
+            <p className='max-w-xs mx-auto text-sm py-5'>By logging in, you agree to everything.</p>
 
-            <UserAuthForm />
-            <div className=''>
-              <p className='px-8 text-sm text-center unerline underline-offset-4'>
+            <LoginButton />
+            <div className='mb-10'>
+              <p className='text-sm text-center unerline underline-offset-4'>
                 New to Chillax{' '}
                 <Link
                   href='/signup'

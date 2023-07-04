@@ -1,15 +1,57 @@
+:root {
+  --blackmatte: #171717;
+  --midknightblack: #00040d;
+  --FilmReelSilver: #808080;
+  --LightGray: #b6b6b6;
+  --GrayShade: #333333;
+  --OrangeCompliment: #ff7700;
+  --purple1: #8275ba;
+  --purple2: #554d7a;
+  --purple3: #201d2e;
+  --purple4: #29253b;
+  --purple5: #242033;
+  --skyblue: #5015;
+  --swamp: #3b3934;
+  --CinematicRed: #b30000;
+  --SpotlightYellow: #ffd700;
+  --StreamingServiceBlue: #0088ff;
+  --TheaterCurtainBurgundy: #800020;
+}
+
+.layoutRoot {
+  background-image: linear-gradient(to bottom, #695e96, #514873, #3a3452, #242033);
+}
 .login {
   width: 100%;
   min-height: 100vh;
   padding: 3rem;
-  background: #2c3e50;
+  /* background: #2c3e50; */
   margin-top: -6rem;
   position: relative;
   z-index: 1;
   display: grid;
   place-items: center;
 }
-form .error {
+
+.login::before {
+  position: absolute;
+  content: '';
+  background-image: url('../assets/spiderman_mobile.jpg');
+  background-size: cover;
+  mix-blend-mode: overlay;
+  -webkit-mask-image: radial-gradient(
+    ellipse farthest-side at 50% 50%,
+    #17181c,
+    rgba(0, 0, 0, 0.1)
+  );
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 2;
+}
+
+.form .error {
   padding: 0.5rem;
   border: 1px rgba(180, 230, 30, 0.25) solid;
   color: #ed2;
@@ -29,25 +71,7 @@ form .error {
   }
 }
 
-.login::before {
-  position: absolute;
-  content: '';
-  background-image: url(./assets/nfbg.jpg);
-  background-size: cover;
-  mix-blend-mode: overlay;
-  -webkit-mask-image: radial-gradient(
-    ellipse farthest-side at 50% 50%,
-    #2c3e50,
-    rgba(0, 0, 0, 0.1)
-  );
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  z-index: 2;
-}
-
-.login form {
+.form {
   background: rgba(23, 32, 50, 0.75);
   padding: 3rem;
   margin: 6rem 1.5rem 1.5rem 1.5rem;
@@ -55,7 +79,7 @@ form .error {
   border: 1px rgba(255, 255, 255, 0.5) solid;
   border-radius: 1rem;
   width: 100%;
-  max-width: 25rem;
+  max-width: 30rem;
 }
 .login .input {
   display: flex;
@@ -84,11 +108,12 @@ form .error {
 }
 .login input:focus {
   border: 1px rgba(255, 255, 255, 0.5) solid;
-  background: #4ca1af;
+  background: #5a7ea1;
+  color: #2c3e50;
   outline: none;
 }
 .login button {
-  background: #3cb19f;
+  background: #2c3e50;
   padding: 0.65rem 0.75rem;
   width: 100%;
   border: none;

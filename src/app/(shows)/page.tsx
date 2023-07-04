@@ -1,12 +1,12 @@
 import type { CategorizedShows } from '@/types'
 
 import { getShows } from '@/lib/fetchers'
-// import {getCurrentUser} from '@/lib/auth'
+import { getCurrentUser } from '@/lib/session'
 import ShowsContainer from '@/components/shows-container'
 import Hero from '@/components/hero'
 
 export default async function Home() {
-  // const user = await getCurrentUser()
+  const user = await getCurrentUser()
 
   const allShows = await getShows('movie')
 
@@ -43,7 +43,7 @@ export default async function Home() {
 
   return (
     <section>
-      <div className='pt-10 pb-16'>
+      <div className='pt-10 pb-16 '>
         <Hero shows={allShows.netflix ?? []} />
         <ShowsContainer shows={allShowsByCategory} />
       </div>

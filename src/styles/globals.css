@@ -22,11 +22,7 @@ body::--webkit-scrollbar {
 }
 
 h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h2 {
   font-family: 'Work Sans', sans-serif;
   font-weight: 800;
 }
@@ -46,15 +42,7 @@ button:focus {
 }
 
 .app__overlay {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 75%;
-  height: 30rem;
-  mix-blend-mode: overlay;
-  mask-image: radial-gradient(ellipse farthest-side at 75% 10%, black, transparent);
-  pointer-events: none;
-  z-index: 10;
+  mask-image: radial-gradient(ellipse farthest-side at 50% 50%, rgba(0, 0, 0, 0.289), transparent);
 }
 
 @media (max-width: 550px) {
@@ -78,4 +66,8 @@ button:focus {
 .Toastify__progress-bar {
   opacity: 0.25;
   height: 2px;
+}
+
+.layoutRoot {
+  background-image: linear-gradient(to bottom, #695e96, #3a3452, #242033);
 }

@@ -1,3 +1,4 @@
+import { env } from '@/env.mjs'
 import type { Show } from '@/types'
 import type { MEDIA_TYPE } from '@prisma/client'
 
@@ -74,9 +75,9 @@ export async function getShows(mediaType: MEDIA_TYPE) {
   }
 }
 
-// Alternative to latest movies https://api.themoviedb.org/3/movie/latest?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US
-// Switch to Trending for the day if movie/latest doesn't work.
-
+// The latest endpiont doesn't seem to work.
+// API endpoint url: https://api.themoviedb.org/3/movie/latest?api_key=<<api_key>>&language=en-US.
+// So taking trending for the day as new shows.
 export async function getNewAndPopularShows() {
   const [popularTvRes, popularMovieRes, trendingTvRes, trendingMovieRes] = await Promise.all([
     fetch(
@@ -114,11 +115,13 @@ export async function getNewAndPopularShows() {
 
 export async function searchShows(query: string) {
   const res = await fetch(
-    `https://api.themoviedb.org/3/search/multi?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US&query=${query}&page=1&include_adult=true`
+    `https://api.themoviedb.org/3/search/multi?api_key=${
+      process.env.NEXT_PUBLIC_TMDB_API_KEY
+    }&query=${encodeURIComponent(query)}`
   )
 
   if (!res.ok) {
-    throw new Error('Failed to fetch shows')
+    throw new Error('Failed to find shows')
   }
 
   const shows = (await res.json()) as { results: Show[] }
@@ -129,7 +132,3 @@ export async function searchShows(query: string) {
     results: popularShows
   }
 }
-
-// export const getMovieInfo = async (movieInfo) => {
-//   const res = await
-// }

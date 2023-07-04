@@ -1,49 +1,44 @@
-import { env } from "@/env.mjs";
-import type { SubscriptionPlan } from "@/types";
+import { env } from '@/env.mjs'
+import type { SubscriptionPlan } from '@/types'
 
 export const mobilePlan: SubscriptionPlan = {
-  name: "Mobile",
-  description: "The plan is suitable for mobile devices.",
-  stripePriceId: process.env.STRIPE_MOBILE_PRICE_ID ?? "",
-  monthlyPrice: 2.99,
-  videoQuality: "Good",
-  resolution: "480p",
-  devices: "Phone, Tablet",
-};
+  name: 'Chillax Mobile',
+  description: 'The plan is suitable for mobile devices.',
+  stripePriceId: process.env.STRIPE_MOBILE_PRICE_ID ?? '',
+  monthlyPrice: 14.99,
+  videoQuality: 'Good',
+  resolution: '480p',
+  devices: 'Phone, Tablet'
+}
 
 export const basicPlan: SubscriptionPlan = {
-  name: "Basic",
-  description: "The plan is suitable for basic devices.",
-  stripePriceId: process.env.STRIPE_BASIC_PRICE_ID ?? "",
-  monthlyPrice: 3.99,
-  videoQuality: "Good",
-  resolution: "720p",
-  devices: "Phone, Tablet, Computer, TV",
-};
+  name: 'Chillax Basic',
+  description: 'The plan is suitable for basic devices.',
+  stripePriceId: process.env.STRIPE_BASIC_PRICE_ID ?? '',
+  monthlyPrice: 19.99,
+  videoQuality: 'Good',
+  resolution: '720p',
+  devices: 'Phone, Tablet, Computer, TV'
+}
 
 export const standardPlan: SubscriptionPlan = {
-  name: "Standard",
-  description: "The plan is suitable for standard devices.",
-  stripePriceId: process.env.STRIPE_STANDARD_PRICE_ID ?? "",
-  monthlyPrice: 7.99,
-  videoQuality: "Better",
-  resolution: "1080p",
-  devices: "Phone, Tablet, Computer, TV",
-};
+  name: 'Chillax Standard',
+  description: 'The plan is suitable for standard devices.',
+  stripePriceId: process.env.STRIPE_STANDARD_PRICE_ID ?? '',
+  monthlyPrice: 29.99,
+  videoQuality: 'Better',
+  resolution: '1080p',
+  devices: 'Phone, Tablet, Computer, TV'
+}
 
 export const premiumPlan: SubscriptionPlan = {
-  name: "Premium",
-  description: "The plan is suitable for premium devices.",
-  stripePriceId: process.env.STRIPE_PREMIUM_PRICE_ID ?? "",
-  monthlyPrice: 9.99,
-  videoQuality: "Best",
-  resolution: "4K+HDR",
-  devices: "Phone, Tablet, Computer, TV",
-};
+  name: 'Chillax Theater',
+  description: 'The plan is suitable for premium devices.',
+  stripePriceId: process.env.STRIPE_PREMIUM_ ?? '',
+  monthlyPrice: 39.99,
+  videoQuality: 'Best',
+  resolution: '4K+HDR',
+  devices: 'Phone, Tablet, Computer, TV, Projector'
+}
 
-export const subscriptionPlans = [
-  mobilePlan,
-  basicPlan,
-  standardPlan,
-  premiumPlan,
-];
+export const subscriptionPlans = [mobilePlan, basicPlan, standardPlan, premiumPlan]

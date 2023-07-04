@@ -131,7 +131,7 @@ const ProfilesScreen = ({ session, children }: ProfilesScreenProps) => {
 
   return (
     <div className='flex flex-col min-h-screen'>
-      <SiteHeader />
+      <SiteHeader session={session} />
       <main className='flex-1'>{children}</main>
       <SiteFooter />
     </div>

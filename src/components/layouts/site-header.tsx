@@ -27,7 +27,6 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
 import { Skeleton } from '@/components/ui/skeleton'
-import { Work_Sans } from 'next/font/google'
 
 interface SiteHeaderProps {
   session: Session | null
@@ -70,7 +69,7 @@ const SiteHeader = ({ session }: SiteHeaderProps) => {
       aria-label='Header'
       className={cn(
         'sticky top-0 z-40 w-full',
-        isScrolled ? 'bg-neutral-900 shadow-md' : 'bg-transparent'
+        isScrolled ? ' bg-transparent shadow-md text-[#333333]' : 'bg-transparent '
       )}
     >
       <nav className='container flex items-center justify-between h-16 space-x-4 max-w-screen-2xl sm:space-x-0'>
@@ -129,7 +128,7 @@ const SiteHeader = ({ session }: SiteHeaderProps) => {
                     ) : (
                       <Skeleton className='rounded-sm aspect-square h-7 bg-neutral-600' />
                     )}
-                    <Icons.chevronDown className='hidden w-4 h-4 ml-2 transition-transform duration-200 lg:inline-block' />
+                    <Icons.chevronDown className='hidden w-4 h-4 ml-2 transition-transform duration-200 md:inline-block' />
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent
