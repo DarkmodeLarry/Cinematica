@@ -1,5 +1,5 @@
 import { env } from '@/env.mjs'
-import type { Show } from '@/types'
+import type { MovieDetails, Show, Movie } from '@/types'
 import type { MEDIA_TYPE } from '@prisma/client'
 
 export async function getShows(mediaType: MEDIA_TYPE) {
@@ -14,28 +14,28 @@ export async function getShows(mediaType: MEDIA_TYPE) {
     docRes
   ] = await Promise.all([
     fetch(
-      `https://api.themoviedb.org/3/trending/${mediaType}/week?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
+      `https://api.themoviedb.org/3/trending/${mediaType}/week?api_key=${env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
     ),
     fetch(
-      `https://api.themoviedb.org/3/${mediaType}/top_rated?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
+      `https://api.themoviedb.org/3/${mediaType}/top_rated?api_key=${env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
     ),
     fetch(
-      `https://api.themoviedb.org/3/discover/${mediaType}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&with_networks=213`
+      `https://api.themoviedb.org/3/discover/${mediaType}?api_key=${env.NEXT_PUBLIC_TMDB_API_KEY}&with_networks=213`
     ),
     fetch(
-      `https://api.themoviedb.org/3/discover/${mediaType}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&with_genres=28`
+      `https://api.themoviedb.org/3/discover/${mediaType}?api_key=${env.NEXT_PUBLIC_TMDB_API_KEY}&with_genres=28`
     ),
     fetch(
-      `https://api.themoviedb.org/3/discover/${mediaType}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&with_genres=35`
+      `https://api.themoviedb.org/3/discover/${mediaType}?api_key=${env.NEXT_PUBLIC_TMDB_API_KEY}&with_genres=35`
     ),
     fetch(
-      `https://api.themoviedb.org/3/discover/${mediaType}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&with_genres=27`
+      `https://api.themoviedb.org/3/discover/${mediaType}?api_key=${env.NEXT_PUBLIC_TMDB_API_KEY}&with_genres=27`
     ),
     fetch(
-      `https://api.themoviedb.org/3/discover/${mediaType}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&with_genres=10749`
+      `https://api.themoviedb.org/3/discover/${mediaType}?api_key=${env.NEXT_PUBLIC_TMDB_API_KEY}&with_genres=10749`
     ),
     fetch(
-      `https://api.themoviedb.org/3/discover/${mediaType}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&with_genres=99`
+      `https://api.themoviedb.org/3/discover/${mediaType}?api_key=${env.NEXT_PUBLIC_TMDB_API_KEY}&with_genres=99`
     )
   ])
 
@@ -75,22 +75,63 @@ export async function getShows(mediaType: MEDIA_TYPE) {
   }
 }
 
+export async function getMovieDetails(movieId: number): Promise<MovieDetails> {
+  const res = await fetch(
+    `https://api.themoviedb.org/3/movie/${movieId}?api_key=${env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
+  )
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch movie details')
+  }
+
+  const movieDetails = (await res.json()) as MovieDetails
+  console.log(movieDetails)
+
+  return movieDetails
+}
+
+export async function getTrendingMovies() {
+  const [trendingMovieRes, movieGenresRes] = await Promise.all([
+    fetch(
+      `https://api.themoviedb.org/3/trending/movie/day?api_key=${env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
+    ),
+    fetch(
+      `https://api.themoviedb.org/3/genre/movie/list?api_key=${env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
+    )
+  ])
+
+  if (!trendingMovieRes.ok || !movieGenresRes.ok) {
+    throw new Error('Failed to fetch trending movies')
+  }
+
+  const [trendingMovies, movieGenres] = (await Promise.all([
+    trendingMovieRes.json(),
+    movieGenresRes.json()
+  ])) as { results: Movie[] }[]
+  console.log(trendingMovies)
+
+  return {
+    trendingMovies: trendingMovies?.results,
+    movieGenres: movieGenres?.results
+  }
+}
+
 // The latest endpiont doesn't seem to work.
 // API endpoint url: https://api.themoviedb.org/3/movie/latest?api_key=<<api_key>>&language=en-US.
 // So taking trending for the day as new shows.
 export async function getNewAndPopularShows() {
   const [popularTvRes, popularMovieRes, trendingTvRes, trendingMovieRes] = await Promise.all([
     fetch(
-      `https://api.themoviedb.org/3/tv/popular?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
+      `https://api.themoviedb.org/3/tv/popular?api_key=${env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
     ),
     fetch(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
+      `https://api.themoviedb.org/3/movie/popular?api_key=${env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
     ),
     fetch(
-      `https://api.themoviedb.org/3/trending/tv/day?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
+      `https://api.themoviedb.org/3/trending/tv/day?api_key=${env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
     ),
     fetch(
-      `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
+      `https://api.themoviedb.org/3/trending/movie/day?api_key=${env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
     )
   ])
 
@@ -116,7 +157,7 @@ export async function getNewAndPopularShows() {
 export async function searchShows(query: string) {
   const res = await fetch(
     `https://api.themoviedb.org/3/search/multi?api_key=${
-      process.env.NEXT_PUBLIC_TMDB_API_KEY
+      env.NEXT_PUBLIC_TMDB_API_KEY
     }&query=${encodeURIComponent(query)}`
   )
 
@@ -130,5 +171,41 @@ export async function searchShows(query: string) {
 
   return {
     results: popularShows
+  }
+}
+
+export async function searchMovies(query: string) {
+  const res = await fetch(
+    `https://api.themoviedb.org/3/search/movie?api_key=${
+      env.NEXT_PUBLIC_TMDB_API_KEY
+    }&query=${encodeURIComponent(query)}`
+  )
+
+  if (!res.ok) {
+    throw new Error('Failed to find movie')
+  }
+
+  const movies = (await res.json()) as { results: Movie[] }
+
+  const popularMovies = movies.results.sort((a, b) => b.popularity - a.popularity)
+
+  return {
+    results: popularMovies
+  }
+}
+
+export async function getTopRatedMovies(mediaType: MEDIA_TYPE) {
+  const [topRatedMoviesRes] = await Promise.all([
+    fetch(
+      `https://api.themoviedb.org/3/${mediaType}/top_rated?api_key=${env.NEXT_PUBLIC_TMDB_API_KEY}$language=en-US`
+    )
+  ])
+
+  const [popularMovies, topRatedMovies] = (await Promise.all([topRatedMoviesRes.json()])) as {
+    results: Movie[]
+  }[]
+
+  return {
+    topRatedMovies: topRatedMovies?.results
   }
 }

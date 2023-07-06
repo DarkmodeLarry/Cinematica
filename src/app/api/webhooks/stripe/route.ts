@@ -1,5 +1,5 @@
 import { headers } from 'next/headers'
-// import { env } from '@/env.mjs'
+import { env } from '@/env.mjs'
 import { prisma } from '@/server/db'
 import type Stripe from 'stripe'
 
@@ -7,12 +7,13 @@ import { stripe } from '@/lib/stripe'
 
 export async function POST(req: Request) {
   const body = await req.text()
+
   const signature = headers().get('Stripe-Signature') as string
 
   let event: Stripe.Event
 
   try {
-    event = stripe.webhooks.constructEvent(body, signature, process.env.STRIPE_WEBHOOK_SECRET ?? '')
+    event = stripe.webhooks.constructEvent(body, signature, env.STRIPE_WEBHOOK_SECRET ?? '')
   } catch (error) {
     return new Response(
       `Webhook Error: ${error instanceof Error ? error.message : 'Unknown error'}`,

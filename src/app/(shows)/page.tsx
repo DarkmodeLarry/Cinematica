@@ -1,9 +1,14 @@
+import type { Metadata } from 'next'
 import type { CategorizedShows } from '@/types'
-
 import { getShows } from '@/lib/fetchers'
 import { getCurrentUser } from '@/lib/session'
 import ShowsContainer from '@/components/shows-container'
 import Hero from '@/components/hero'
+
+export const metadata: Metadata = {
+  title: 'Movies',
+  description: 'All movies grouped by ratings'
+}
 
 export default async function Home() {
   const user = await getCurrentUser()
@@ -44,8 +49,8 @@ export default async function Home() {
   return (
     <section>
       <div className='pt-10 pb-16 '>
-        <Hero shows={allShows.netflix ?? []} />
-        <ShowsContainer shows={allShowsByCategory} />
+        <Hero user={user} shows={allShows.netflix ?? []} />
+        <ShowsContainer user={user} shows={allShowsByCategory} />
       </div>
     </section>
   )

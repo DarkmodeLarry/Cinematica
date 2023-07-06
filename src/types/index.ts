@@ -101,6 +101,72 @@ export type Show = {
   vote_count: number
 }
 
+export type Movie = {
+  adult: boolean
+  certification: string | null
+  backdrop_path: string | null
+  media_type: MEDIA_TYPE
+  budget: number | null
+  homepage: string | null
+  showId: string
+  genres: Genre[]
+  id: number
+  imdb_id: string | null
+  original_language: string
+  original_title: string | null
+  overview: string | null
+  popularity: number
+  poster_path: string | null
+  number_of_seasons: number | null
+  number_of_episodes: number | null
+  release_date: string | null
+  first_air_date: string | null
+  last_air_date: string | null
+  revenue: number | null
+  runtime: number | null
+  status: string | null
+  tagline: string | null
+  title: string | null
+  name: string | null
+  video: boolean
+  vote_average: number
+  vote_count: number
+}
+
+export type MovieDetails = {
+  certification: string | null
+  media_type: string
+  primary_release_year: number
+  primary_release_date: string
+  genres: Genre[]
+  movieId: string
+  id: number
+  imdb_id: string | null
+  original_language: string
+  original_title: string | null
+  overview: string | null
+  popularity: number
+  poster_path: string | null
+  release_date: string | null
+  revenue: number
+  runtime: number
+  status: string 
+  tagline: string
+  title: string 
+  video: boolean
+  vote_average: number
+  vote_count: number
+  videos?: {
+    results: VideoResult[]
+
+  }
+}
+
+
+
+
+}
+
 export type ShowWithGenreAndVideo = Show & {
   genres: Genre[]
   videos?: {

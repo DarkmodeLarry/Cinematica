@@ -4,23 +4,30 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { useModalStore } from '@/stores/modal'
 import { useSearchStore } from '@/stores/search'
-import type { Show } from '@/types'
-
+import type { Movie, Show } from '@/types'
+import type { CategorizedShows, SessionUser } from '@/types'
+import TextTruncate from 'react-text-truncate'
 import { Icons } from '@/components/icons'
 import { Button } from '@/components/ui/button'
 import { Grow } from '@mui/material'
 import ModalVideo from 'react-modal-video'
+import TrendingMoviesComponent from './TrendingMoviesComponent'
+import { title } from 'process'
 
 interface HeroProps {
+  user?: SessionUser
   shows: Show[]
 }
 
 const Hero = ({ shows }: HeroProps) => {
   // randomize show on page render
   const [playing, setPlaying] = useState(false)
+  const [truncLine, setTruncLine] = useState(2)
   const [randomShow, setRandomShow] = useState<Show | null>(null)
+
   useEffect(() => {
     const randomNumber = Math.floor(Math.random() * shows.length)
+
     setRandomShow(shows[randomNumber] ?? null)
   }, [shows])
 
@@ -32,21 +39,45 @@ const Hero = ({ shows }: HeroProps) => {
     return null
   }
 
+  const readMore = (e) => {
+    setTruncLine(0)
+    e.preventDefault()
+    e.target.style.display = 'none'
+  }
+
+  const getReleaseYear = (date: string) => {
+    let year = new Date(date)
+    return year.getFullYear()
+  }
+
   return (
-    <section aria-label='Hero' className='w-full'>
-      {randomShow && (
-        <div className='container w-full max-w-screen-2xl'>
-          <div className='inset-0 w-full h-screen -z-10'>
-            <div className='absolute top-0 right-0 w-[75%] h-[40rem] mix-blend-overlay pointer-events-none z-10 app__overlay'>
+    <>
+      <section aria-label='Hero' className='app__featured'>
+        {randomShow && (
+          <div className='app__overlay'>
+            <p className='app__featuredInfo'>{title}</p>
+            <h2 className='app__feauredTitle'>
+              {randomShow.title || randomShow.original_title || randomShow.name}
+              <span className='app__featuredYear'>
+                {getReleaseYear(randomShow.release_date as string)}
+              </span>
+            </h2>
+            <p className='app__featuredGenres'>
+              <span className='app__featuredCert'>PG-13</span>
+
+              <span className='app__featuredGenre'>Action</span>
+            </p>
+            <div className='app__overlay'>
               <Image
                 src={`https://image.tmdb.org/t/p/original/${
                   randomShow?.poster_path ?? randomShow?.backdrop_path ?? ''
                 }`}
                 alt={randomShow?.title ?? 'poster'}
-                className='bg-right-top bg-cover w-[75%]'
+                className='app__featuredImg'
                 fill
                 priority
               />
+              h2 p
             </div>
             <div className='grid max-w-lg pt-24 space-y-2 '>
               <p className='text-xl font-light uppercase'>today&apos;s featured film</p>
@@ -89,9 +120,10 @@ const Hero = ({ shows }: HeroProps) => {
               </div>
             </div>
           </div>
-        </div>
-      )}
-    </section>
+        )}
+      </section>
+      <TrendingMoviesComponent />
+    </>
   )
 }
 

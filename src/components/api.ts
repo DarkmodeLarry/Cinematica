@@ -12,6 +12,7 @@ const requests = {
   fetchTrendingMovies: `/trending/movie/week?api_key=${API_KEY}`,
   fetchTrendingTV: `/trending/tv/week?api_key=${API_KEY}`
 }
+
 const fetchMovie = (id: string) => {
   return `/movie/${id}?api_key=${API_KEY}&append_to_response=videos,release_dates`
 }
