@@ -105,7 +105,9 @@ export function MainNav({ items }: MainNavProps) {
                     searchStore.setShows([])
                   }}
                 >
-                  {item.icon && <item.icon className='w-4 h-4 mr-2' aria-hidden='true' />}
+                  {item.icon && (
+                    <item.icon className='w-4 h-4 mr-2 bg-transparent' aria-hidden='true' />
+                  )}
                   <span className='line-clamp-1'>{item.title}</span>
                 </Link>
               </DropdownMenuItem>

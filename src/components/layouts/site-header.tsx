@@ -140,7 +140,7 @@ const SiteHeader = ({ session }: SiteHeaderProps) => {
                     <DropdownMenuItem
                       key={profile.id}
                       asChild
-                      className='hover:bg-neutral-700 focus:bg-neutral-700 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700'
+                      className='hover:bg-neutral-700 focus:bg-neutral-700 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 cursor-pointer'
                     >
                       <Button
                         aria-label={profile.name}
@@ -185,7 +185,7 @@ const SiteHeader = ({ session }: SiteHeaderProps) => {
                         <DropdownMenuItem
                           key={index}
                           asChild
-                          className='hover:bg-neutral-700 focus:bg-neutral-700 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700'
+                          className='hover:bg-neutral-700 focus:bg-neutral-700 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 cursor-pointer'
                         >
                           <Link href={item.href}>
                             {item.icon && (
@@ -201,7 +201,7 @@ const SiteHeader = ({ session }: SiteHeaderProps) => {
                         <DropdownMenuItem
                           key={index}
                           asChild
-                          className='hover:bg-neutral-700 focus:bg-neutral-700 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700'
+                          className='hover:bg-neutral-700 focus:bg-neutral-700 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 cursor-pointer'
                         >
                           <span onClick={item.onClick}>
                             {item.icon && (
@@ -222,7 +222,7 @@ const SiteHeader = ({ session }: SiteHeaderProps) => {
                         <DropdownMenuItem
                           key={index}
                           asChild
-                          className='hover:bg-neutral-700 focus:bg-neutral-700 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700'
+                          className='hover:bg-neutral-700 focus:bg-neutral-700 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 cursor-pointer'
                         >
                           <span
                             className='grid line-clamp-1 place-items-center'
@@ -243,7 +243,7 @@ const SiteHeader = ({ session }: SiteHeaderProps) => {
                   buttonVariants({
                     variant: 'brand',
                     size: 'auto',
-                    className: 'h-auto rounded'
+                    className: 'h-auto rounded cursor-pointer'
                   })
                 )}
               >
