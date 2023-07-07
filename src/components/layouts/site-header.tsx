@@ -69,10 +69,10 @@ const SiteHeader = ({ session }: SiteHeaderProps) => {
       aria-label='Header'
       className={cn(
         'sticky top-0 z-40 w-full',
-        isScrolled ? ' bg-transparent shadow-md text-[#333333]' : 'bg-transparent '
+        isScrolled ? ' bg-transparent text-[#333333]' : 'bg-transparent '
       )}
     >
-      <nav className='container flex items-center justify-between h-16 space-x-4 max-w-screen-2xl sm:space-x-0'>
+      <nav className='container flex items-center justify-between h-20 space-x-4 max-w-screen-2xl sm:space-x-0'>
         <MainNav items={siteConfig.mainNav} />
         <div className='flex items-center space-x-1.5'>
           {mounted ? (

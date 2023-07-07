@@ -42,7 +42,7 @@ const ShowsContainer = ({ user, shows }: ShowsContainerProps) => {
   }
 
   return (
-    <div className={cn('w-full space-y-5 sm:space-y-10', path === '/' && 'pt-24')}>
+    <div className={cn('shows w-full space-y-5 sm:space-y-10', path === '/' && 'pt-6')}>
       {modalStore.open ? <ShowModal open={modalStore.open} setOpen={modalStore.setOpen} /> : null}
       {path === '/' && myShowsQuery?.isSuccess && myShowsQuery.data.length > 0 ? (
         <ShowsCarousel title='My List' shows={user ? myShowsQuery?.data : []} />

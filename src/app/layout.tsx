@@ -91,12 +91,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <html
         lang='en'
         className={cn(
-          'layoutRoot scroll-smooth layoutRoot bg-[#242033] text-slate-900 antialiased',
+          'layoutRoot scroll-smooth layoutRoot  text-slate-900 antialiased',
           mulish.variable
         )}
       >
         <head />
-        <body className='min-h-screen'>
+        <body className=''>
           {children}
           <ToastWrapper />
           <TailwindIndicator />
@@ -105,44 +105,3 @@ export default function RootLayout({ children }: RootLayoutProps) {
     </TRPCProvider>
   )
 }
-
-// StreamVue
-// FlixHub
-// MoviePlus
-// CineStream
-// ScreenMasters
-// PicturePerfect
-// SilverScreen
-// Cinematica
-// MovieMagic
-// StreamFlix
-// CinemaMax
-// FilmFlow
-// BigScreen
-// StreamCine
-// MovieSphere
-// HomeScreen
-// CineView
-// FilmFlex
-// ScreenBox
-// PicturePalace
-// CinemaWonders
-// PicturePerfection
-// FlickerVision
-// FilmFantasy
-// CineSpectacle
-// ReelMagic
-// SilverScreenSociety
-// EpicCinema
-// BlockbusterBliss
-// MovieMarquee
-// Cinemagic
-// ShowtimeSpectacular
-// ScreenMarvel
-// FilmPhenomenon
-// PictureParadise
-// CinematicMarvels
-// BigScreenMagic
-// FilmFever
-// PictureShowcase
-// ReelEnchantment

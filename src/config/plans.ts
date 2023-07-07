@@ -50,7 +50,6 @@ export const plansConfig: PlansConfig = {
     {
       name: 'Chillax HD',
       screen: 'Max 5 screens',
-      shows: '2 shows per week',
       price: 29.99,
       videoQuality: 'Better',
       resolution: '1080p HD Streaming',

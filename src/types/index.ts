@@ -45,11 +45,6 @@ export type PlansConfig = {
   }[]
 }
 
-export type Genre = {
-  id: number
-  name: string | null
-}
-
 export type VideoType =
   | 'Bloopers'
   | 'Featurette'
@@ -87,9 +82,10 @@ export type Show = {
   poster_path: string | null
   number_of_seasons: number | null
   number_of_episodes: number | null
-  release_date: string | null
-  first_air_date: string | null
-  last_air_date: string | null
+  release_date: string
+  first_air_date: string
+  last_air_date: string
+  certification: string | null
   revenue: number | null
   runtime: number | null
   status: string | null
@@ -109,7 +105,6 @@ export type Movie = {
   budget: number | null
   homepage: string | null
   showId: string
-  genres: Genre[]
   id: number
   imdb_id: string | null
   original_language: string
@@ -138,7 +133,6 @@ export type MovieDetails = {
   media_type: string
   primary_release_year: number
   primary_release_date: string
-  genres: Genre[]
   movieId: string
   id: number
   imdb_id: string | null
@@ -150,21 +144,15 @@ export type MovieDetails = {
   release_date: string | null
   revenue: number
   runtime: number
-  status: string 
+  status: string
   tagline: string
-  title: string 
+  title: string
   video: boolean
   vote_average: number
   vote_count: number
   videos?: {
     results: VideoResult[]
-
   }
-}
-
-
-
-
 }
 
 export type ShowWithGenreAndVideo = Show & {
@@ -213,4 +201,9 @@ export type PickedProfile = Pick<
   'id' | 'name' | 'language' | 'gameHandle' | 'email' | 'pin'
 > & {
   icon: PickedIcon
+}
+
+export type MovieGenres = {
+  id: number
+  name: string | null
 }

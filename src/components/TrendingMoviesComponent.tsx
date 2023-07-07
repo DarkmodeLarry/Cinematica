@@ -53,12 +53,12 @@ function TrendingMoviesComponent() {
   return (
     <div className='list '>
       <div className='list__trending'>
-        <h4 className=''>Top Rated Movies</h4>
+        <h4 className=''>Popular Movies</h4>
 
         <div className='list__items '>
           {displayTrendingMovies &&
             displayTrendingMovies.map((movie) => (
-              <div className='list__item' key={`${movie}`} onClick={() => handleClick}>
+              <div className='list__item border-2' key={`${movie}`} onClick={() => handleClick}>
                 <Image
                   key={movie.id}
                   src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
@@ -90,22 +90,15 @@ function TrendingMoviesComponent() {
       <div className='list__genreList'>
         <h4 className=''>Movies by Genre</h4>
         <div className='list_genre'>
-          {displayTrendingMovies.map(
-            (genre) =>
-              genre.id !== 10770 &&
-              genre.id !== 99 &&
-              genre.id !== 37 &&
-              genre.id !== 10752 &&
-              genre.id !== 9648 && (
-                <Button
-                  className='app__button'
-                  onClick={() => console.log(genre.name, genre.id)}
-                  variant='default'
-                >
-                  {genre.name}
-                </Button>
-              )
-          )}
+          {displayTrendingMovies.map((genre) => (
+            <Button
+              className='app__button'
+              onClick={() => console.log(genre.name, genre.id)}
+              variant='default'
+            >
+              {genre.name}
+            </Button>
+          ))}
         </div>
       </div>
     </div>

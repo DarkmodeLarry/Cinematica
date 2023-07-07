@@ -48,7 +48,7 @@ export default async function Home() {
 
   return (
     <section>
-      <div className='pt-10 pb-16 '>
+      <div className='app'>
         <Hero user={user} shows={allShows.netflix ?? []} />
         <ShowsContainer user={user} shows={allShowsByCategory} />
       </div>

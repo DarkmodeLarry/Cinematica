@@ -15,18 +15,13 @@ export const siteConfig: SiteConfig = {
   },
   mainNav: [
     {
-      title: 'HOME',
-      href: '/',
-      icon: Icons.home
-    },
-    {
       title: 'ABOUT',
       href: '/about',
       icon: Icons.tvShow
     },
     {
       title: 'TV SHOWS',
-      href: '/tv-shows',
+      href: '/tvshows',
       icon: Icons.tvShow
     },
     {
@@ -39,11 +34,11 @@ export const siteConfig: SiteConfig = {
       href: '/new-and-popular',
       icon: Icons.trendingUp
     },
-    {
-      title: 'MY LIST',
-      href: '/my-list',
-      icon: Icons.list
-    },
+    // {
+    //   title: 'MY LIST',
+    //   href: '/my-list',
+    //   icon: Icons.list
+    // },
     {
       title: 'Notifications',
       onClick: () => alert('🛹 Do a kickflip'),

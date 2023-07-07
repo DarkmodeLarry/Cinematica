@@ -1,8 +1,8 @@
 .list {
-  padding: 1.5rem 3rem;
+  padding: 2rem 3rem 3rem 3rem;
   display: flex;
   width: 100%;
-  background: linear-gradient(to bottom, #3a3452, #695e96);
+  background: linear-gradient(to top, #3a3452, #695e96);
 }
 
 .list h4 {
@@ -36,6 +36,7 @@
 .list__items > .list__item {
   flex: 0 0 300px;
   height: 200px;
+  margin: 1rem;
   background: linear-gradient(to center, #3a3452, #695e96);
   scroll-snap-align: start;
   border-radius: 1rem;
@@ -67,7 +68,7 @@
   content: '';
   width: 100%;
   height: 100%;
-  background-image: radial-gradient(ellipse farthest-side at 0 100%, #2c3e50, transparent);
+  background-image: radial-gradient(ellipse farthest-side at 0 100%, #3a3452, transparent);
   background-size: 150% 150%;
   background-position: 0 0;
   top: 0;
@@ -80,7 +81,7 @@
   background-position: 0% 100%;
 }
 
-.list__itemInfo {
+.list__item__info {
   position: absolute;
   left: 0;
   bottom: -6rem;
@@ -137,7 +138,7 @@
 }
 
 .list__genreList {
-  flex: 0 0 400px;
+  flex: 0 0 250px;
 }
 
 .list__genres {
@@ -147,7 +148,7 @@
 
 .list__genres > .app__button {
   /* color: #2c3e50 !important; */
-  color: #f5f5f5;
+  color: #3a3452;
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
   transition: all 0.2s ease-out !important;
