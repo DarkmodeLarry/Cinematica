@@ -5,6 +5,7 @@ import { getCurrentUser } from '@/lib/session'
 import ShowsContainer from '@/components/shows-container'
 import Hero from '@/components/hero'
 
+
 export const metadata: Metadata = {
   title: 'Movies',
   description: 'All movies grouped by ratings'
@@ -48,7 +49,7 @@ export default async function Home() {
 
   return (
     <section>
-      <div className='app'>
+      <div className='relative w-full mx-auto my-0'>
         <Hero user={user} shows={allShows.netflix ?? []} />
         <ShowsContainer user={user} shows={allShowsByCategory} />
       </div>

@@ -51,51 +51,46 @@ const Hero = ({ shows }: HeroProps) => {
     return year.getFullYear()
   }
 
-  // const overlayStyle = {
-  //   backgroundImage: `url(${imageLargeBase}${
-  //     randomShow.backdrop_path || featuredMovie.poster_path
-  //   })`,
-  //   backgroundSize: 'cover',
-  //   backgroundPosition: 'top right'
-  // }
 
   return (
     <>
-      <section aria-label='Hero' className='app__featured'>
+      <section aria-label='Hero' className='pt-28 pr-6 pb-16 pl-6
+       md:pt-28 md:pr-12 md:pb-12 md:w-screen bg-gradient-to-t from-[#2776C6] to-[#A4DBFF]'>
         {randomShow && (
           <>
-            <div className='app__overlay'>
+            <div className='hero__overlay pointer-events-none absolute top-0 right-0 w-3/4 h-[32rem] bg-blend-overlay z-50 md:w-[80%] md:h-[38rem] md:[40rem] lg:[45rem] md:left-[25%] md:top-[0%]'>
               <Image
                 src={`https://image.tmdb.org/t/p/w1280/${
                   randomShow?.poster_path ?? randomShow?.backdrop_path ?? ''
                 }`}
                 alt={randomShow?.title ?? 'poster'}
-                className='app__featuredImg'
-                fill
+                className='bg-right-top bg-cover'
                 priority
+                fill
               />
             </div>
-            <p className='app__featuredInfo'>Today&apos;s Featured Film</p>
-            <h2 className='app__featuredTitle'>
+            <div className="max-w-3xl">
+            <p className='text-sm font-bold font-mulish'>Today&apos;s Featured Film</p>
+            <h2 className='my-2 text-2xl font-semibold'>
               {randomShow.title || randomShow.original_title || randomShow.name}
-              <span className='app__featuredYear'>
+              <span className='hero__featuredYear'>
                 ({getReleaseYear(randomShow.release_date || randomShow.first_air_date)})
               </span>
             </h2>
-            <p className='app__featuredGenres'>
-              <span className='app__featuredCert'>{randomShow.certification}PG-13</span>
+            <p className='p-1 overflow-hidden text-sm font-medium uppercase whitespace-nowrap text-ellipsis'>
+              <span className='px-2 py-1 m-0 mt-4 mr-2 -ml-1 border rounded-md bg-white/5'>{randomShow.certification}PG-13</span>
               {randomShow?.genres?.slice(0, 3).map((genre) => (
-                <span className='app__featuredGenre'>{genre.name}Goofy Genre</span>
+                <span className='m-0 mt-4 text-xs font-medium uppercase'>{genre.name}Goofy Genre</span>
               ))}
             </p>
-            <div className='flex space-x-2 text-xs font-semibold md:text-sm'>
+            <div className='flex my-2 space-x-2 text-xs font-semibold md:text-sm'>
               <p className='text-green-600'>{randomShow?.vote_average * 10 ?? '-'}% Match</p>
               <p className='text-gray-300'>{randomShow?.release_date ?? '-'}</p>
             </div>
             <TextTruncate
               line={truncLine}
               element='p'
-              containerClassName='app__featuredDesc'
+              containerClassName='w-3/4 my-2 textTruncate text-sm'
               textTruncateChild={
                 <a href='#' onClick={readMore}>
                   <small>[more]</small>
@@ -105,46 +100,48 @@ const Hero = ({ shows }: HeroProps) => {
               text={randomShow.overview}
             />
             {randomShow.number_of_seasons && (
-              <p className='app__seriesSeasons'>
+              <p className='hero__seriesSeasons'>
                 {randomShow.number_of_seasons} Seasons, {randomShow.number_of_episodes} Episodes
               </p>
             )}
-            <div className='app__featuredRating'>
+            <div className='flex items-center mb-4'>
               <Rating
                 name='movie-rating'
                 value={randomShow.vote_average / 2}
                 precision={0.5}
                 icon={<StarRoundedIcon />}
               />
-              <p className='app__featuredLikes'>
+              <p className='mt-0 mb-2 ml-2 mr-0 hero__featuredLikes'>
                 {/* {numeral(randomShow.vote_average / 2).format('0.0')}
                 <small> ({numeral(randomShow.vote_count).format('0,0')})</small> */}
               </p>
             </div>
 
             <Button
-              className='app__button'
+              className='rounded-full text-[#3a6979] font-medium font-work bg-[#d7d7d7] hover:bg-white'
               variant='default'
               onClick={() => setPlaying(true)}
-              // startIcon={<PlayArrowRoundedIcon />}
             >
               <Icons.play
-                className='w-4 h-4 fill-current mr-2 text-indigo-500'
+                className='w-4 h-4 mr-2 text-blue-300 fill-current'
                 aria-hidden='true'
               />
               Play Trailer
             </Button>
-          </>
+            </div>
+          </> 
         )}
       </section>
+      
       <TrendingMoviesComponent />
+      
     </>
   )
 }
 
 export default Hero
 
-//         <p className='app__featuredGenres'>
+//         <p className='hero__featuredGenres'>
 //           <span className='app__featuredCert'>PG-13</span>
 
 //           <span className='app__featuredGenre'>Action</span>

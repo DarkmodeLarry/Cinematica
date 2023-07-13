@@ -5,7 +5,6 @@ import { getTrendingMovies } from '@/lib/fetchers'
 import TextTruncate from 'react-text-truncate'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import '@/styles/TrendingMovies.css'
 import { Button } from './ui/button'
 
 interface TrendingMoviesProps {
@@ -51,14 +50,14 @@ function TrendingMoviesComponent() {
   }
 
   return (
-    <div className='list '>
-      <div className='list__trending'>
-        <h4 className=''>Popular Movies</h4>
-
-        <div className='list__items '>
+    <div className='list bg-gradient-to-b from-[#2776C6] to-[#A4DBFF] flex w-full py-3 px-6 md:py-6 md:px-12'>
+      <div className='relative mr-8 list__trending'>
+        <h4 className='mb-8'>Popular Movies</h4>
+        
+        <div className='flex p-3 mr-8 -mt-3 -ml-3 overflow-y-scroll list__items scroll-pl-3'>
           {displayTrendingMovies &&
             displayTrendingMovies.map((movie) => (
-              <div className='list__item border-2' key={`${movie}`} onClick={() => handleClick}>
+              <div className='list__item' key={`${movie}`} onClick={() => handleClick}>
                 <Image
                   key={movie.id}
                   src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}

@@ -13,9 +13,9 @@ export default async function ShowsLayout({ children }: ShowsLayoutProps) {
   //TODO: look for a way to use zustand profile state here
 
   return (
-    <div className='relative w-full my-0 mx-auto app'>
+    <div className='relative'>
       <SiteHeader session={session} />
-      <main className='flex-1'>{children}</main>
+      <main className='absolute top-0'>{children}</main>
       <SiteFooter />
     </div>
   )

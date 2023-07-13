@@ -37,7 +37,7 @@ export function MainNav({ items }: MainNavProps) {
           searchStore.setShows([])
         }}
       >
-        <h2 className='w-28 h-auto object-cover transition-opacity-80 hover:opacity-80 active:opacity-100 active:border-2 active:border-cyan-700 font-work text-xl hover:scale-105 hover:duration-150'>
+        <h2 className='w-28 h-auto object-cover hover:opacity-100 font-work text-xl hover:scale-105 hover:duration-100 ease-in-out'>
           Cinematica
         </h2>
       </Link>
@@ -50,9 +50,9 @@ export function MainNav({ items }: MainNavProps) {
                   key={index}
                   href={item.href}
                   className={cn(
-                    'flex items-center text-lg font-medium text-[#f5f5f5] transition hover:text-slate-300 hover:text-opacity-70 dark:text-slate-300 dark:hover:text-slate-300 dark:hover:text-opacity-80 sm:text-sm hover:scale-105',
-                    path === item.href && 'font-bold text-[#f5f5f5] dark:text-white',
-                    item.disabled && 'cursor-not-allowed opacity-80'
+                    'flex items-center text-lg font-semibold text-slate-900  dark:text-slate-900 sm:text-sm hover:scale-95 transition-all duration-150',
+                    path === item.href && 'font-bold dark:text-black',
+                    item.disabled && 'cursor-not-allowed '
                   )}
                   onClick={() => searchStore.setQuery('')}
                 >

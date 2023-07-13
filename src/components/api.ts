@@ -47,4 +47,5 @@ export {
   fetchSimilarMovies,
   fetchSimilarTV
 }
+
 export default requests
