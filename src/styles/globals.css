@@ -34,7 +34,7 @@ button:focus {
   -webkit-mask-image: radial-gradient(ellipse farthest-side at 75% 10%, black, transparent);
 }
 .shows {
-  background: linear-gradient(to bottom, #2776C6, #2a272a);
+  background: linear-gradient(to bottom, #a4dbff, #2776c6, #2a272a);
 }
 
 .hero__overlay {
@@ -64,7 +64,6 @@ button:focus {
   background-color: transparent;
   display: none;
 }
-
 
 .list__items > .list__item {
   flex: 0 0 300px;
