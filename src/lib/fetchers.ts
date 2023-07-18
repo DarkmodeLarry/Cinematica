@@ -1,5 +1,5 @@
 import { env } from '@/env.mjs'
-import type { MovieDetails, Show, Movie } from '@/types'
+import type { MovieDetails, Show, Movie, Genre } from '@/types'
 import type { MEDIA_TYPE } from '@prisma/client'
 
 export async function getShows(mediaType: MEDIA_TYPE) {
@@ -90,66 +90,34 @@ export async function getMovieDetails(movieId: number): Promise<MovieDetails> {
   return movieDetails
 }
 
-export async function getTrendingMovies() {
-  const [trendingMovieRes, movieGenresRes] = await Promise.all([
-    fetch(
-      `https://api.themoviedb.org/3/trending/movie/day?api_key=${env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
-    ),
-    fetch(
-      `https://api.themoviedb.org/3/genre/movie/list?api_key=${env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
-    )
-  ])
+export async function getGenres() {
+  const res = await fetch(
+    `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`
+  )
 
-  if (!trendingMovieRes.ok || !movieGenresRes.ok) {
-    throw new Error('Failed to fetch trending movies')
+  if (!res.ok) {
+    throw new Error('Failed to fetch genres')
   }
 
-  const [trendingMovies, movieGenres] = (await Promise.all([
-    trendingMovieRes.json(),
-    movieGenresRes.json()
-  ])) as { results: Movie[] }[]
-  console.log(trendingMovies)
+  const genres = (await res.json()) as { genres: Genre[] }
 
   return {
-    trendingMovies: trendingMovies?.results,
-    movieGenres: movieGenres?.results
+    genres: genres?.genres
   }
 }
 
-// The latest endpiont doesn't seem to work.
-// API endpoint url: https://api.themoviedb.org/3/movie/latest?api_key=<<api_key>>&language=en-US.
-// So taking trending for the day as new shows.
-export async function getNewAndPopularShows() {
-  const [popularTvRes, popularMovieRes, trendingTvRes, trendingMovieRes] = await Promise.all([
-    fetch(
-      `https://api.themoviedb.org/3/tv/popular?api_key=${env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
-    ),
-    fetch(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
-    ),
-    fetch(
-      `https://api.themoviedb.org/3/trending/tv/day?api_key=${env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
-    ),
-    fetch(
-      `https://api.themoviedb.org/3/trending/movie/day?api_key=${env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
-    )
-  ])
+export async function getTrendingMovies() {
+  const res = await fetch(
+    `https://api.themoviedb.org/3/trending/movie/day?api_key=${env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
+  )
 
-  if (!popularTvRes.ok || !popularMovieRes.ok || !trendingTvRes.ok || !trendingMovieRes.ok) {
-    throw new Error('Failed to fetch shows')
+  if (!res.ok) {
+    throw new Error('Failed to fetch trending movies')
   }
 
-  const [popularTvs, popularMovies, trendingTvs, trendingMovies] = (await Promise.all([
-    popularTvRes.json(),
-    popularMovieRes.json(),
-    trendingTvRes.json(),
-    trendingMovieRes.json()
-  ])) as { results: Show[] }[]
+  const trendingMovies = (await res.json()) as { results: Movie[] }
 
   return {
-    popularTvs: popularTvs?.results,
-    popularMovies: popularMovies?.results,
-    trendingTvs: trendingTvs?.results,
     trendingMovies: trendingMovies?.results
   }
 }

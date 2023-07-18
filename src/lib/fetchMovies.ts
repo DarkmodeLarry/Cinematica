@@ -32,11 +32,15 @@ const fetchSimilarMovies = (id: string) => {
 const fetchSimilarTV = (id: string) => {
   return `/tv/${id}/similar?api_key=${API_KEY}&language=en-US&page=1`
 }
+const fetchGenreMovies = (id: string) => {
+  return `/discover/movie?api_key=${API_KEY}&with_genres=${id}&language=en-US&page=1`
+}
 
 export {
   imageLargeBase,
   imageBase,
   fetchMovie,
+  fetchGenreMovies,
   fetchTV,
   fetchSearchString,
   fetchRecommendedMovies,

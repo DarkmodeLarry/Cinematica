@@ -8,8 +8,8 @@ interface SiteFooterProps {
 
 const SiteFooter = ({ children }: SiteFooterProps) => {
   return (
-    <div className='grid p-4 pt-12 sm:pt-20 place-items-center bg-gradient-to-t from-[#3a3452] to-[#695e96]'>
-      <Image src={tmbdIcon} alt='movie icon' height={50} />
+    <div className='grid place-items-center bg-gradient-to-t from-slate-800 via-slate-500 to-slate-800 pt-10 h-72'>
+      <Image src={tmbdIcon} alt='movie icon' height={70} />
       <p className='w-full text-center whitespace-nowrap'>
         <a href='https://dashsantosh.ga'>@Larry </a> |{' '}
         <a href='https://github.com/santdas36'> GitHub</a>

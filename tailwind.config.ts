@@ -7,7 +7,8 @@ module.exports = {
       fontFamily: {
         mulish: [`var(--font-mulish)`],
         work: [`var(--font-work)`],
-        space: [`var(--font-space)`]
+        space: [`var(--font-space)`],
+        dyna: [`var(--font-dyna)`]
       },
       container: {
         center: true,

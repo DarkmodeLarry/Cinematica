@@ -1,10 +1,22 @@
-import { Work_Sans, Mulish, Space_Grotesk } from 'next/font/google'
+import { Work_Sans, Mulish, DynaPuff, Abril_Fatface } from 'next/font/google'
 import TRPCProvider from '@/context/trpc-provider'
 import { siteConfig } from '@/config/site'
 import { absoluteUrl, cn } from '@/lib/utils'
 import TailwindIndicator from '@/components/tailwind-indicator'
 import '@/styles/globals.css'
 import ToastWrapper from '@/components/ui/toast-wrapper'
+
+const abril = Abril_Fatface({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-abril'
+})
+
+const dyna = DynaPuff({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-dyna'
+})
 
 const mulish = Mulish({
   subsets: ['latin'],
@@ -16,12 +28,6 @@ const work = Work_Sans({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-work'
-})
-
-const space = Space_Grotesk({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-space'
 })
 
 interface RootLayoutProps {
@@ -92,7 +98,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
         lang='en'
         className={cn(
           'layoutRoot scroll-smooth layoutRoot  text-slate-900 antialiased',
-          mulish.variable
+          mulish.variable,
+          dyna.variable
         )}
       >
         <head />

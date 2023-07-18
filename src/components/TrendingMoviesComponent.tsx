@@ -1,7 +1,8 @@
 'use client'
 
-import { Movie, MovieDetails } from '@/types'
-import { getTrendingMovies } from '@/lib/fetchers'
+import { Movie, MovieDetails, Genre } from '@/types'
+import { getTrendingMovies, getGenres } from '@/lib/fetchers'
+import axios from 'axios'
 import TextTruncate from 'react-text-truncate'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
@@ -12,19 +13,23 @@ interface TrendingMoviesProps {
   movieDetails: MovieDetails[]
 }
 
-/**
- * 1. Import the `getTrendingMovies` function from '@/lib/fetchers'
- * 2. Create a `TrendingMoviesComponent` component
- * 3. Fetch the trending movies on the server side with the useEffect hook and use the
- * async await syntax to fetch the trending movies with a try catch block.
- * 4. Set the trending movies to the state with the `setTrendingMovies` function
- * 5. Display the trending movies in the JSX
- *
- * @returns
- */
+interface GenreResponse {
+  genres: Genre[]
+}
+
 function TrendingMoviesComponent() {
   const [trendingMovies, setTrendingMovies] = useState<Movie[]>([])
   const [movieId, setMovieId] = useState<Movie['id']>()
+  const [genres, setGenres] = useState<Genre[]>([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await getGenres()
+      setGenres(response.genres)
+    }
+    fetchData()
+    console.log(genres)
+  }, [])
 
   useEffect(() => {
     const fetchTrendingMovies = async () => {
@@ -43,21 +48,21 @@ function TrendingMoviesComponent() {
   const displayTrendingMovies = trendingMovies.slice(0, 12) // limit to 12 movies
 
   // extract unique genres from trendingMovies
-  const uniqueGenres = Array.from(new Set(displayTrendingMovies.flatMap((movie) => movie.genres)))
+  // const uniqueGenres = Array.from(new Set(displayTrendingMovies.flatMap((movie) => movie.genres)))
 
   const handleClick = (movie: string) => {
     setMovieId(movieId)
   }
 
   return (
-    <div className='list bg-gradient-to-b from-[#2776C6] to-[#A4DBFF] flex w-full py-3 px-6 md:py-6 md:px-12'>
+    <div className='list bg-gradient-to-b from-blue-600 via-blue-600 to-slate-700 flex w-full pb-3 px-6 md:pt-6 md:px-12'>
       <div className='relative mr-8 list__trending'>
-        <h4 className='mb-8'>Popular Movies</h4>
-        
+        <h4 className='mb-8 font-dyna text-4xl font-bold'>Popular Movies</h4>
+
         <div className='flex p-3 mr-8 -mt-3 -ml-3 overflow-y-scroll list__items scroll-pl-3'>
           {displayTrendingMovies &&
-            displayTrendingMovies.map((movie) => (
-              <div className='list__item' key={`${movie}`} onClick={() => handleClick}>
+            displayTrendingMovies.map((movie, i) => (
+              <div className='list__item' key={`${movie}-${i}`} onClick={() => handleClick}>
                 <Image
                   key={movie.id}
                   src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
@@ -87,11 +92,12 @@ function TrendingMoviesComponent() {
       </div>
 
       <div className='list__genreList'>
-        <h4 className=''>Movies by Genre</h4>
-        <div className='list_genre'>
-          {displayTrendingMovies.map((genre) => (
+        <h4 className='text-4xl font-bold font-dyna'>Movies by Genre</h4>
+        <div className='list__genre w-full'>
+          {genres.map((genre, i) => (
             <Button
-              className='app__button'
+              key={i}
+              className='app__button uppercase font-work font-medium tracking-wider bg-[#f8f8f8] text-sky-600 rounded-full m-1 text-md p-6'
               onClick={() => console.log(genre.name, genre.id)}
               variant='default'
             >

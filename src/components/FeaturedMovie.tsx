@@ -10,7 +10,6 @@ import TextTruncate from 'react-text-truncate'
 import ModalVideo from 'react-modal-video'
 import numeral from 'numeral'
 import '@/styles/modalVideo.css'
-import '@/styles/FeaturedMovie.css'
 
 interface FeaturedMovieProps {
   title: string

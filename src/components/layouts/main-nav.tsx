@@ -37,7 +37,7 @@ export function MainNav({ items }: MainNavProps) {
           searchStore.setShows([])
         }}
       >
-        <h2 className='w-28 h-auto object-cover hover:opacity-100 font-work text-xl hover:scale-105 hover:duration-100 ease-in-out'>
+        <h2 className='w-28 h-auto object-cover hover:opacity-100 font-mulish text-xl hover:scale-105 hover:duration-100 ease-in-out'>
           Cinematica
         </h2>
       </Link>

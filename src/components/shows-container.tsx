@@ -42,7 +42,12 @@ const ShowsContainer = ({ user, shows }: ShowsContainerProps) => {
   }
 
   return (
-    <div className={cn('shows w-full space-y-5 sm:space-y-10', path === '/' && 'pt-6')}>
+    <div
+      className={cn(
+        'shows bg-gradient-to-b from-slate-700 via-blue-700 to-slate-800 w-full space-y-5 sm:space-y-10',
+        path === '/' && 'py-16'
+      )}
+    >
       {modalStore.open ? <ShowModal open={modalStore.open} setOpen={modalStore.setOpen} /> : null}
       {path === '/' && myShowsQuery?.isSuccess && myShowsQuery.data.length > 0 ? (
         <ShowsCarousel title='My List' shows={user ? myShowsQuery?.data : []} />

@@ -4,7 +4,7 @@ import { getShows } from '@/lib/fetchers'
 import { getCurrentUser } from '@/lib/session'
 import ShowsContainer from '@/components/shows-container'
 import Hero from '@/components/hero'
-
+import SiteFooter from '@/components/layouts/site-footer'
 
 export const metadata: Metadata = {
   title: 'Movies',
@@ -52,6 +52,7 @@ export default async function Home() {
       <div className='relative w-full mx-auto my-0'>
         <Hero user={user} shows={allShows.netflix ?? []} />
         <ShowsContainer user={user} shows={allShowsByCategory} />
+        <SiteFooter />
       </div>
     </section>
   )
